@@ -2,3 +2,6 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.full-width{width: 100%;}
+.margin-5{margin: 5px !important;}
+

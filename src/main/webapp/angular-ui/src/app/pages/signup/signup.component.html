@@ -1,0 +1,41 @@
+<h1>signup </h1>
+
+{{ user| json }}
+<form (ngSubmit)="formSubmit()">
+    <mat-form-field appearance="outline" class="full-width" >
+        <mat-label>Username</mat-label>
+        <input [(ngModel)]="user.username" name="username" required minlength="6" matInput placeholder="Enter here.." fullWidth={true} >    
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width" >
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="user.password" name="password" required minlength="6" type="password" matInput placeholder="Enter here.." >    
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline" class="full-width" >
+        <mat-label>First name</mat-label>
+        <input [(ngModel)]="user.firstName" name="firstName" matInput placeholder="Enter here.." fullWidth={true} >    
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width" >
+        <mat-label>Last Name</mat-label>
+        <input [(ngModel)]="user.lastName" name="lastName" matInput placeholder="Enter here.." fullWidth={true} >    
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width" >
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="user.email" name="email" required type="email" matInput placeholder="Enter here.." fullWidth={true} >    
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width" >
+        <mat-label>Phone number</mat-label>
+        <input [(ngModel)]="user.phone" name="phone" type="number" matInput placeholder="Enter here.." fullWidth={true} >    
+      </mat-form-field>
+
+      <div class="container">
+        <button type="submit" mat-raised-button color="primary" class="margin-5">Signup</button>
+        <button type="reset" mat-raised-button class="margin-5">Reset</button>
+      </div>
+      
+
+</form>

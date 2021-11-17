@@ -6,6 +6,7 @@ import in.purabtech.quiz.application.repository.RoleRepository;
 import in.purabtech.quiz.application.repository.UserRepository;
 import in.purabtech.quiz.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,6 +21,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public User createUser(User user) throws Exception {
         User local = userRepository.findByUsername(user.getUsername());
@@ -32,7 +36,7 @@ public class UserServiceImpl implements UserService {
             user1.setFirstName(user.getFirstName());
             user1.setLastName(user.getLastName());
             user1.setUsername(user.getUsername());
-            user1.setPassword(user.getPassword());
+            user1.setPassword(passwordEncoder.encode(user.getPassword()));
             user1.setEmail(user.getEmail());
             user1.setProfile(user.getProfile());
 

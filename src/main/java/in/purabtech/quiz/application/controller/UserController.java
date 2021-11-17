@@ -1,5 +1,6 @@
 package in.purabtech.quiz.application.controller;
 
+import in.purabtech.quiz.application.helper.UserNotFoundException;
 import in.purabtech.quiz.application.model.Role;
 import in.purabtech.quiz.application.model.User;
 import in.purabtech.quiz.application.service.UserService;
@@ -38,5 +39,10 @@ public class UserController {
     public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) throws Exception {
         final User user1 = userService.UpdateUserById(id,user);
         return ResponseEntity.ok(user1);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<?> exceptionHandler(UserNotFoundException ex) {
+        return ResponseEntity.ok("User Not found!");
     }
 }

@@ -1,15 +1,14 @@
 package in.purabtech.quiz.application.controller;
 
 import in.purabtech.quiz.application.helper.UserNotFoundException;
-import in.purabtech.quiz.application.model.Role;
 import in.purabtech.quiz.application.model.User;
 import in.purabtech.quiz.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import javax.servlet.http.HttpServletRequest;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -31,8 +30,18 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUserByID(id);
+    public Object deleteUser(@PathVariable("id") Long id, HttpServletRequest request)
+    {
+        String username=request.getUserPrincipal().getName();
+        System.out.println(request.getUserPrincipal());
+        //find logged in user id
+        User user = userService.getUserbyUsername(username);
+        if(user.getId() != id) {
+            userService.deleteUserByID(id);
+            return ResponseEntity.ok("user Deleted");
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN);
+        }
     }
 
     @PutMapping("/{id}")

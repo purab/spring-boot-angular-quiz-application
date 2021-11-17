@@ -4,7 +4,8 @@
 <form (ngSubmit)="formSubmit()">
     <mat-form-field appearance="outline" class="full-width" >
         <mat-label>Username</mat-label>
-        <input [(ngModel)]="user.username" name="username" required minlength="6" matInput placeholder="Enter here.." fullWidth={true} >    
+        <input [(ngModel)]="user.username" name="username" matInput placeholder="Enter here.." fullWidth={true} >    
+        <mat-hint>Username should be unique</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width" >

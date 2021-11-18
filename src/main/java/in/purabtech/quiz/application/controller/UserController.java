@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -28,6 +29,11 @@ public class UserController {
     public User getUser(@PathVariable("username") String username) {
             return userService.getUserbyUsername(username);
     }
+
+    /*@GetMapping("/{id}")
+    public Optional<User> getUserById(@PathVariable("id") Long id) {
+        return userService.findById(id);
+    }*/
 
     @DeleteMapping("/{id}")
     public Object deleteUser(@PathVariable("id") Long id, HttpServletRequest request)

@@ -4,6 +4,7 @@ import in.purabtech.quiz.application.config.JwtUtils;
 import in.purabtech.quiz.application.helper.UserNotFoundException;
 import in.purabtech.quiz.application.model.JwtRequest;
 import in.purabtech.quiz.application.model.JwtResponse;
+import in.purabtech.quiz.application.model.User;
 import in.purabtech.quiz.application.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +13,11 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class AuthController {
 
@@ -52,5 +54,10 @@ public class AuthController {
         } catch (BadCredentialsException e) {
             throw new Exception("Bad credentails"+e.getMessage());
         }
+    }
+
+    @GetMapping("/current-user")
+    public User getCurrentUser(Principal principal){
+        return (User) userDetailsService.loadUserByUsername(principal.getName());
     }
 }

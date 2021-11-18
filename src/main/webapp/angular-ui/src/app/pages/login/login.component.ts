@@ -45,10 +45,16 @@ export class LoginComponent implements OnInit {
             (user:any) => {
                 this.userService.setUser(user);
                 console.log(user);
-                //redirect user - admin dashboard 
-                
+                //redirect user - admin dashboard
                 //redirect user - normal user dashboard 
-                this.router.navigate(['/']);
+                if(this.userService.getUserRole()=='ADMIN') {
+                  this.router.navigate(['/admin']);
+                } else if(this.userService.getUserRole()=='USER'){
+                  this.router.navigate(['/user']);
+                } else{
+                  this.userService.logout();
+                  //location.reload();
+                }
             },
             (error) => console.log(error)
           );

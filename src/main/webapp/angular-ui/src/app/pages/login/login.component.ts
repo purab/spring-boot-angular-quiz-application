@@ -37,11 +37,23 @@ export class LoginComponent implements OnInit {
     console.log(this.loginData);
     this.userService.generateToekn(this.loginData)
     .subscribe(
-      data => {
+      (data:any) => {
         console.log(data)
-        this.userService.loginUser(JSON.stringify(data))
+        this.userService.loginUser(data.token);
+        this.userService.getCurrentUser()
+          .subscribe(
+            (user:any) => {
+                this.userService.setUser(user);
+                console.log(user);
+                //redirect user - admin dashboard 
+                
+                //redirect user - normal user dashboard 
+                this.router.navigate(['/']);
+            },
+            (error) => console.log(error)
+          );
       }, 
-      error => console.log(error)
+      (error) => console.log(error)
       );
     //this.user = new User();
     //this.router.navigate(['/users']);

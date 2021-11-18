@@ -32,6 +32,10 @@ export class UserService {
     return token;
   }
 
+  public getCurrentUser(){
+    return this.http.get(`${baseUrl}/current-user`);
+  }
+
   //user is logged in or not
   public isLoggedIn(){
     let token=localStorage.getItem('userToken');
@@ -69,8 +73,7 @@ export class UserService {
       return user.authorities[0].authority;
     } else {
       return false;
-    }
-    
+    }    
   }
 
 }

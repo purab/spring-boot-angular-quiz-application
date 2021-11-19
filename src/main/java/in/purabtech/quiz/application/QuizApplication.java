@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-public class QuizApplication implements CommandLineRunner {
+public class QuizApplication {
 
 	@Autowired
 	private UserService userService;
@@ -26,32 +26,4 @@ public class QuizApplication implements CommandLineRunner {
 		SpringApplication.run(QuizApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println("starting code..");
-		/*User user=new User();
-		user.setFirstName("purab");
-		user.setLastName("kharat");
-		user.setUsername("purabtech");
-		user.setPassword("password");
-		user.setEmail("test@purabtech.in");
-		user.setProfile("default.png");
-
-		List<Role> roles= new ArrayList<>();
-		Role role = roleRepository.findByRoleName("USER");
-		if(role !=null) {
-			roles.add(roleRepository.findByRoleName("USER")); //SET USER ROLE
-		} else {
-			Role role1=new Role();
-			role1.setRoleName("USER");
-			roles.add(role1); //SET USER ROLE
-		}
-
-		user.setRoles(roles);
-
-		User user1 = userService.createUser(user);
-
-		System.out.println(user1.getUsername());*/
-
-	}
 }

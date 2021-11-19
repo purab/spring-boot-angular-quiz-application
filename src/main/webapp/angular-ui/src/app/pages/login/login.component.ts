@@ -56,10 +56,24 @@ export class LoginComponent implements OnInit {
                   //location.reload();
                 }
             },
-            (error) => console.log(error)
+            (error) => {
+              console.log(error)
+              this.snack.open("Invalid Details!","ok",{
+                duration:3000,
+                verticalPosition:'top',
+                horizontalPosition:'right'
+              });
+            }
           );
       }, 
-      (error) => console.log(error)
+      (error) => {
+        console.log(error);
+        this.snack.open("Invalid Details!","ok",{
+          duration:3000,
+          verticalPosition:'top',
+          horizontalPosition:'right'
+        });
+      }
       );
     //this.user = new User();
     //this.router.navigate(['/users']);

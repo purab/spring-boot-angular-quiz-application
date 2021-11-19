@@ -5,4 +5,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background:
 .full-width{width: 100%;}
 .margin-5{margin: 5px !important;}
 mat-toolbar a{margin:10px !important}
+.mat-icon-button{width: auto !important;}
 

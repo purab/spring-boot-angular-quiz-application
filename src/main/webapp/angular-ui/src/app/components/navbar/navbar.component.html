@@ -11,11 +11,14 @@
     Signup
   </a>
   <a *ngIf="userService.isLoggedIn()" routerLink="/user" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
-    user
+    user-page
   </a>
   
   <a *ngIf="userService.isLoggedIn()" routerLink="/signup" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    admin
+    admin-page
+  </a>
+  <a *ngIf="userService.isLoggedIn()" routerLink="/signup" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    {{userService.getUser().username}}
   </a>
   <a *ngIf="userService.isLoggedIn()" (click)="userService.logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     logout

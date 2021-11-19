@@ -48,7 +48,8 @@ export class UserService {
 
   public logout() {
     localStorage.removeItem('userToken');
-    //this.router.navigate(['/']);
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
     return true;
   }
 

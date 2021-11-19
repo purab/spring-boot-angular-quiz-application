@@ -4,14 +4,20 @@
   </a>
   <span>My App</span>
   <span class="example-spacer"></span>
-  <a routerLink="/login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
-    <mat-icon>login</mat-icon>
+  <a *ngIf="!userService.isLoggedIn()" routerLink="/login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
+    Login
+  </a>
+  <a *ngIf="!userService.isLoggedIn()" routerLink="/signup" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
+    Signup
+  </a>
+  <a *ngIf="userService.isLoggedIn()" routerLink="/user" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
+    user
   </a>
   
-  <a routerLink="/signup" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>person_add</mat-icon>
+  <a *ngIf="userService.isLoggedIn()" routerLink="/signup" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    admin
   </a>
-  <a routerLink="/logout" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>logout</mat-icon>
+  <a *ngIf="userService.isLoggedIn()" (click)="userService.logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    logout
   </a>
 </mat-toolbar>

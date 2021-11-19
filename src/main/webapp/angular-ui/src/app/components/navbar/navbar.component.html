@@ -4,23 +4,24 @@
   </a>
   <span>My App</span>
   <span class="example-spacer"></span>
-  <a *ngIf="!userService.isLoggedIn()" routerLink="/login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
+  <a *ngIf="!isLoggedIn" routerLink="/login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
     Login
   </a>
-  <a *ngIf="!userService.isLoggedIn()" routerLink="/signup" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
+  <a *ngIf="!isLoggedIn" routerLink="/signup" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
     Signup
   </a>
-  <a *ngIf="userService.isLoggedIn()" routerLink="/user" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
+  <a *ngIf="isLoggedIn" routerLink="/user" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">    
     user-page
   </a>
   
-  <a *ngIf="userService.isLoggedIn()" routerLink="/signup" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <a *ngIf="isLoggedIn" routerLink="/admin" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     admin-page
   </a>
-  <a *ngIf="userService.isLoggedIn()" routerLink="/signup" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    {{userService.getUser().username}}
+  <a *ngIf="isLoggedIn" routerLink="/user" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    {{ user !=null ? user.username: user }}
   </a>
-  <a *ngIf="userService.isLoggedIn()" (click)="userService.logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <a *ngIf="isLoggedIn" (click)="navLogout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     logout
-  </a>
+  </a>  
 </mat-toolbar>
+{{ user !=null ? user.username: user }}

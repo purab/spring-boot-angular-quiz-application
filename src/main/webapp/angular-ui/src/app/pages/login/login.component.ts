@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
             (user:any) => {
                 this.userService.setUser(user);
                 console.log(user);
+                this.userService.loginStatusSubject.next(true);
                 //redirect user - admin dashboard
                 //redirect user - normal user dashboard 
                 if(this.userService.getUserRole()=='ADMIN') {

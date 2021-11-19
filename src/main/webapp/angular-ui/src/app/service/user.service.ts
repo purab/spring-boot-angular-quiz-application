@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user.model';
 import baseUrl from './helper';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  public loginStatusSubject=new Subject<Boolean>();
 
   constructor(
     private http:HttpClient,
@@ -23,7 +26,7 @@ export class UserService {
   }
 
   public loginUser(token:any) {
-    localStorage.setItem('userToken',token);
+    localStorage.setItem('userToken',token);    
     return true;
   }
 
@@ -38,7 +41,7 @@ export class UserService {
 
   //user is logged in or not
   public isLoggedIn(){
-    let token=localStorage.getItem('userToken');
+    let token=localStorage.getItem('userToken');    
     if(token==undefined || token==''||token==null) {
       return false
     } else {

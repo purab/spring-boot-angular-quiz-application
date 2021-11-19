@@ -4,13 +4,13 @@
 <form (ngSubmit)="formSubmit()">
     <mat-form-field appearance="outline" class="full-width" >
         <mat-label>Username</mat-label>
-        <input [(ngModel)]="user.username" name="username" matInput placeholder="Enter here.." fullWidth={true} >    
+        <input [(ngModel)]="user.username" name="username" autocomplete="given-name" matInput placeholder="Enter here.." fullWidth={true} >    
         <mat-hint>Username should be unique</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width" >
         <mat-label>Password</mat-label>
-        <input [(ngModel)]="user.password" name="password" required minlength="6" type="password" matInput placeholder="Enter here.." >    
+        <input [(ngModel)]="user.password" name="password" required minlength="6" type="password" autocomplete="current-password" matInput placeholder="Enter here.." >    
       </mat-form-field>
     
       <mat-form-field appearance="outline" class="full-width" >

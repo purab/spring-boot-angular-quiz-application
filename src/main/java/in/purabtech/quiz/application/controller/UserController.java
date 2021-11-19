@@ -1,5 +1,6 @@
 package in.purabtech.quiz.application.controller;
 
+import in.purabtech.quiz.application.helper.UserFoundException;
 import in.purabtech.quiz.application.helper.UserNotFoundException;
 import in.purabtech.quiz.application.model.User;
 import in.purabtech.quiz.application.service.UserService;
@@ -56,8 +57,8 @@ public class UserController {
         return ResponseEntity.ok(user1);
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<?> exceptionHandler(UserNotFoundException ex) {
-        return ResponseEntity.ok("User Not found!");
+    @ExceptionHandler(UserFoundException.class)
+    public ResponseEntity<?> exceptionHandler(UserFoundException ex) {
+        return ResponseEntity.ok("User found!");
     }
 }

@@ -38,11 +38,16 @@ export class SignupComponent implements OnInit {
     console.log(this.user);
     this.userService.addUser(this.user)
     .subscribe(
-      data => console.log(data), 
+      (data) => {
+        console.log(data);
+        this.user = new User();
+        this.router.navigate(['/login']);            
+        this.snack.open("user registerd successfuly","ok",{duration:3000,verticalPosition:'top',horizontalPosition:'right'});
+         
+      }, 
       error => console.log(error)
       );
-    //this.user = new User();
-    //this.router.navigate(['/users']);    
+    
   }
 
 }

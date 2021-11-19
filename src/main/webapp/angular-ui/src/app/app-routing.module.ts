@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:"signup",component:SignupComponent,pathMatch:"full"},
   {path:"login",component:LoginComponent,pathMatch:"full"},
   {path:"admin",component:DashboardComponent,pathMatch:"full",canActivate:[AdminGuard]},
+  {path:"admin/profile",component:ProfileComponent,pathMatch:"full",canActivate:[AdminGuard]},
   {path:"user",component:UserDashboardComponent,pathMatch:"full",canActivate:[UserGuard]}
 ];
 

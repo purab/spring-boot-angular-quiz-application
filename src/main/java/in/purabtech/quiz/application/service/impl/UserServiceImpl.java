@@ -1,5 +1,7 @@
 package in.purabtech.quiz.application.service.impl;
 
+import in.purabtech.quiz.application.helper.UserFoundException;
+import in.purabtech.quiz.application.helper.UserNotFoundException;
 import in.purabtech.quiz.application.model.Role;
 import in.purabtech.quiz.application.model.User;
 import in.purabtech.quiz.application.repository.RoleRepository;
@@ -30,7 +32,7 @@ public class UserServiceImpl implements UserService {
         User local = userRepository.findByUsername(user.getUsername());
         if(local !=null){
             System.out.println("User already exits!");
-            throw new Exception("User already present");
+            throw new UserFoundException();
         } else {
             //create user
             User user1=new User();
